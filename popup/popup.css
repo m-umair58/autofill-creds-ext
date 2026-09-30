@@ -1,0 +1,332 @@
+:root {
+  --ink: #152033;
+  --muted: #5a6a7a;
+  --line: #c5ced8;
+  --surface: #f4f6f8;
+  --card: #ffffff;
+  --blue: #1e4d8c;
+  --blue-deep: #183d70;
+  --blue-soft: #eef3f9;
+  --copper: #c45d16;
+  --danger: #9f1239;
+  --danger-bg: #fff1f2;
+  --radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 372px;
+  min-height: 300px;
+  font: 13px/1.4 "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, #e8edf2 0%, var(--surface) 48%),
+    var(--surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+.accent-bar {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--blue) 0%,
+    var(--blue) 42%,
+    var(--copper) 42%,
+    var(--copper) 100%
+  );
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-block {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.mark {
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  flex-shrink: 0;
+  background: var(--blue);
+  box-shadow: 4px 4px 0 var(--copper);
+}
+
+h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.muted {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 240px;
+}
+
+.view {
+  padding: 14px 16px 8px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+select,
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 9px 10px;
+  font: inherit;
+  background: var(--card);
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(30, 77, 140, 0.16);
+}
+
+.accounts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.account-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 4px 4px 4px 12px;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.account-row:hover {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.account-main {
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 8px 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  min-width: 0;
+}
+
+.account-label {
+  display: block;
+  font-weight: 650;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+.account-user {
+  display: block;
+  color: var(--muted);
+  font-size: 10.5px;
+  margin-top: 2px;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copy-actions {
+  display: flex;
+  gap: 3px;
+  padding-right: 4px;
+}
+
+.copy-actions button {
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: var(--radius);
+  padding: 6px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.copy-actions button:hover {
+  color: var(--ink);
+  background: #e2e8ee;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 0;
+  line-height: 1.45;
+}
+
+.status {
+  min-height: 1.2em;
+  font-size: 11px;
+  color: var(--blue);
+  font-weight: 650;
+}
+
+.footer-status {
+  margin: 0;
+  padding: 4px 16px 14px;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+button.primary,
+button.ghost {
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 650;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 7px 11px;
+}
+
+button.primary {
+  border: 1px solid var(--blue-deep);
+  background: var(--blue);
+  color: #fff;
+}
+
+button.primary:hover {
+  background: #2563a8;
+}
+
+button.ghost,
+label.file-btn {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--ink);
+}
+
+button.ghost:hover,
+label.file-btn:hover {
+  background: #fff;
+  border-color: #9aa8b6;
+}
+
+label.file-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 11px;
+  cursor: pointer;
+}
+
+.manage-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.manage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+
+.app-card h2 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.account-edit {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.account-edit .edit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.danger {
+  border: 1px solid #fecdd3;
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-radius: var(--radius);
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.inline-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}

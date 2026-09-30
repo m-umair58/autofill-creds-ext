@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dev Creds</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="accent-bar" aria-hidden="true"></div>
+
+    <header class="header">
+      <div class="brand-block">
+        <span class="mark" aria-hidden="true"></span>
+        <div>
+          <h1>Dev Creds</h1>
+          <p id="context-line" class="muted">Detecting page…</p>
+        </div>
+      </div>
+      <button type="button" id="btn-manage" class="ghost" title="Manage apps">
+        Manage
+      </button>
+    </header>
+
+    <main id="view-fill" class="view">
+      <div id="app-picker-wrap" class="hidden field">
+        <label for="app-select">App</label>
+        <select id="app-select"></select>
+      </div>
+
+      <div id="accounts" class="accounts"></div>
+      <p id="empty-fill" class="empty hidden">
+        No accounts yet. Sign in once on localhost — we’ll ask to save — or add
+        one under Manage.
+      </p>
+    </main>
+
+    <main id="view-manage" class="view hidden">
+      <div class="manage-toolbar">
+        <button type="button" id="btn-back" class="ghost">Back</button>
+        <div class="row-actions">
+          <button type="button" id="btn-export" class="ghost">Export</button>
+          <label class="ghost file-btn">
+            Import
+            <input type="file" id="import-file" accept="application/json,.json" hidden />
+          </label>
+          <button type="button" id="btn-add-app" class="primary">Add app</button>
+        </div>
+      </div>
+      <div id="manage-list" class="manage-list"></div>
+      <p id="manage-empty" class="empty hidden">No apps saved yet.</p>
+    </main>
+
+    <p id="status" class="status footer-status" role="status"></p>
+
+    <script src="../shared/match.js"></script>
+    <script src="../shared/storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

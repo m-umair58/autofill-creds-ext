@@ -1,0 +1,380 @@
+/* Dev Creds in-page overlays — blueprint / workstation look */
+
+#dev-creds-autofill-panel,
+#dev-creds-save-prompt {
+  all: initial;
+  position: fixed !important;
+  z-index: 2147483646 !important;
+  box-sizing: border-box !important;
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  color: #152033 !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+#dev-creds-autofill-panel *,
+#dev-creds-save-prompt * {
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+}
+
+/* —— Autofill panel —— */
+#dev-creds-autofill-panel {
+  width: 300px !important;
+  max-width: calc(100vw - 24px) !important;
+  animation: dc-rise 0.28s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+
+#dev-creds-autofill-panel.dc-dock-br {
+  right: 18px !important;
+  bottom: 18px !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+#dev-creds-autofill-panel.dc-expanded {
+  background: #f4f6f8 !important;
+  border: 1px solid #c5ced8 !important;
+  border-radius: 4px !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 18px 40px -18px rgba(21, 32, 51, 0.35) !important;
+  overflow: hidden !important;
+}
+
+#dev-creds-autofill-panel.dc-expanded::before {
+  content: "" !important;
+  display: block !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #1e4d8c 0%, #1e4d8c 42%, #c45d16 42%, #c45d16 100%) !important;
+}
+
+#dev-creds-autofill-panel.dc-flash-ok {
+  outline: 2px solid #1e4d8c !important;
+  outline-offset: 1px !important;
+}
+
+.dc-panel-head {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 12px 12px 8px !important;
+}
+
+.dc-panel-brand {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: flex-start !important;
+  min-width: 0 !important;
+}
+
+.dc-mark {
+  width: 10px !important;
+  height: 10px !important;
+  margin-top: 4px !important;
+  flex-shrink: 0 !important;
+  background: #1e4d8c !important;
+  box-shadow: 4px 4px 0 #c45d16 !important;
+}
+
+.dc-panel-title {
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  color: #152033 !important;
+}
+
+.dc-panel-sub {
+  margin-top: 2px !important;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace !important;
+  font-size: 10px !important;
+  color: #5a6a7a !important;
+  letter-spacing: 0.01em !important;
+}
+
+.dc-panel-tools {
+  display: flex !important;
+  gap: 2px !important;
+}
+
+.dc-icon-btn {
+  width: 26px !important;
+  height: 26px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #5a6a7a !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  border-radius: 3px !important;
+  padding: 0 !important;
+}
+
+.dc-icon-btn:hover {
+  background: #e2e8ee !important;
+  color: #152033 !important;
+}
+
+.dc-account-list {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 4px 8px 10px !important;
+  gap: 4px !important;
+  max-height: 260px !important;
+  overflow-y: auto !important;
+}
+
+.dc-account {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto auto !important;
+  column-gap: 8px !important;
+  align-items: center !important;
+  width: 100% !important;
+  text-align: left !important;
+  border: 1px solid transparent !important;
+  background: #ffffff !important;
+  border-radius: 3px !important;
+  padding: 9px 10px !important;
+  cursor: pointer !important;
+  transition: border-color 0.12s ease, background 0.12s ease !important;
+  color: inherit !important;
+}
+
+.dc-account:hover {
+  border-color: #1e4d8c !important;
+  background: #eef3f9 !important;
+}
+
+.dc-role {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  color: #152033 !important;
+}
+
+.dc-user {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace !important;
+  font-size: 10.5px !important;
+  color: #5a6a7a !important;
+  margin-top: 2px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  max-width: 200px !important;
+}
+
+.dc-fill-hint {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #1e4d8c !important;
+  opacity: 0.35 !important;
+  transition: opacity 0.12s ease !important;
+}
+
+.dc-fill-meta {
+  grid-column: 2 !important;
+  grid-row: 1 / span 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.dc-kbd {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 4px !important;
+  border: 1px solid #c5ced8 !important;
+  border-radius: 2px !important;
+  background: #eef1f4 !important;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace !important;
+  font-size: 10px !important;
+  font-weight: 650 !important;
+  color: #5a6a7a !important;
+}
+
+.dc-account:hover .dc-fill-hint {
+  opacity: 1 !important;
+}
+
+
+/* Collapsed chip */
+#dev-creds-autofill-panel.dc-collapsed {
+  width: auto !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#dev-creds-autofill-panel.dc-collapsed::before {
+  display: none !important;
+}
+
+.dc-chip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 12px 8px 10px !important;
+  border: 1px solid #c5ced8 !important;
+  border-radius: 4px !important;
+  background: #f4f6f8 !important;
+  box-shadow: 0 10px 28px -14px rgba(21, 32, 51, 0.4) !important;
+  cursor: pointer !important;
+  color: inherit !important;
+}
+
+.dc-chip:hover {
+  border-color: #1e4d8c !important;
+}
+
+.dc-chip .dc-mark {
+  margin-top: 0 !important;
+}
+
+.dc-chip-text {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 1px !important;
+}
+
+.dc-chip-title {
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  color: #152033 !important;
+}
+
+.dc-chip-meta {
+  font-size: 10px !important;
+  color: #5a6a7a !important;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace !important;
+}
+
+/* —— Save prompt —— */
+#dev-creds-save-prompt {
+  right: 18px !important;
+  bottom: 18px !important;
+  width: 320px !important;
+  max-width: calc(100vw - 24px) !important;
+  background: #f4f6f8 !important;
+  border: 1px solid #c5ced8 !important;
+  border-radius: 4px !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 18px 40px -18px rgba(21, 32, 51, 0.35) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  animation: dc-rise 0.28s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+
+#dev-creds-save-prompt::before {
+  content: "" !important;
+  display: block !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #1e4d8c 0%, #1e4d8c 42%, #c45d16 42%, #c45d16 100%) !important;
+}
+
+#dev-creds-save-prompt .dc-body {
+  padding: 14px !important;
+  display: block !important;
+}
+
+#dev-creds-save-prompt .dc-title {
+  font-weight: 650 !important;
+  font-size: 14px !important;
+  margin: 0 0 4px !important;
+  color: #152033 !important;
+  letter-spacing: -0.01em !important;
+}
+
+#dev-creds-save-prompt .dc-sub {
+  margin: 0 0 14px !important;
+  color: #5a6a7a !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  font-family: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace !important;
+  word-break: break-all !important;
+}
+
+#dev-creds-save-prompt label {
+  display: block !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #5a6a7a !important;
+  margin: 0 0 5px !important;
+}
+
+#dev-creds-save-prompt input {
+  width: 100% !important;
+  border: 1px solid #c5ced8 !important;
+  border-radius: 3px !important;
+  padding: 9px 10px !important;
+  margin-bottom: 12px !important;
+  font-size: 13px !important;
+  color: #152033 !important;
+  background: #ffffff !important;
+  outline: none !important;
+}
+
+#dev-creds-save-prompt input:focus {
+  border-color: #1e4d8c !important;
+  box-shadow: 0 0 0 2px rgba(30, 77, 140, 0.18) !important;
+}
+
+#dev-creds-save-prompt .dc-actions {
+  display: flex !important;
+  gap: 8px !important;
+  justify-content: flex-end !important;
+  margin-top: 2px !important;
+}
+
+#dev-creds-save-prompt button {
+  border-radius: 3px !important;
+  padding: 8px 14px !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  cursor: pointer !important;
+}
+
+#dev-creds-save-prompt .dc-skip {
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: #5a6a7a !important;
+}
+
+#dev-creds-save-prompt .dc-skip:hover {
+  background: #e2e8ee !important;
+  color: #152033 !important;
+}
+
+#dev-creds-save-prompt .dc-save {
+  border: 1px solid #183d70 !important;
+  background: #1e4d8c !important;
+  color: #ffffff !important;
+}
+
+#dev-creds-save-prompt .dc-save:hover {
+  background: #2563a8 !important;
+}
+
+@keyframes dc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
